@@ -1,3 +1,11 @@
+"""
+This file calls no other file and is self contained.
+
+Can be used to test that the environment works, and to see Cartpole in action.
+
+Uses very basic logic to decide the movements.
+"""
+
 import gymnasium as gym
 
 env = gym.make("CartPole-v1", render_mode="human")
@@ -19,11 +27,11 @@ total_reward = 0
 
 while not episode_over:
     # Choose an action: 0 = push cart left, 1 = push cart right
+    # Basic test for now, if cart on left side, move right and vice versa
     if observation[2] >= 0:
         action = 1
     else:
         action = 0
-    #action = env.action_space.sample()  # Random action for now - real agents will be smarter!
 
     # Take the action and see what happens
     observation, reward, terminated, truncated, info = env.step(action)
