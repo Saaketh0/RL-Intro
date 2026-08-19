@@ -1,5 +1,5 @@
 import gymnasium as gym
-from REINFORCE_V3 import Reinforce
+from REINFORCE_JAX import Reinforce
 
 
 RANGE = 100

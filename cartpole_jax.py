@@ -1,4 +1,4 @@
-from REINFORCE_V3 import Reinforce, Policy_Network
+from REINFORCE_JAX import Reinforce, Policy_Network
 import jax
 import jax.numpy as jnp
 import gymnax
