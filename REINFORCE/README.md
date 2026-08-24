@@ -1,5 +1,14 @@
 # The REINFORCE algorithms.
 
+Key Terms:
+log π(a|s) = Higher when the probability of the action taken was high and vice versa
+- So if the action was one of the best actions, it would be weighed more since this action was considered really good by the policy, if it was a predicted bad action the weight would be lower
+G(t) = How strongly should I reinforce the action I took above
+
+Note: This is technically VPA (Vanilla Policy Gradient) since I have implemented a baseline on each of them.
+REINFORCE basically scores everything as it is
+VPG scores things based on how well they were compared to the average of all results at that point (baseline)
+
 All of them have their own neural network, with the og and batched having the same exact one, and the JAX one only being changed to fit into Flax standards. 
 
 They all also have a very basic baseline calculation, which is just the average of all discounted_returns recieved at that timestep.

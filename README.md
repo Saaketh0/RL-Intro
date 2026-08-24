@@ -7,3 +7,7 @@ Will try to add explanations for each subject.
 Currently, I have implemented REINFORCE from scratch, training it on the Cartpole problem.
 I have added batching to this implementation, and have also moved the entire implementation to JAX to see how much I could
 speed up training.
+
+Future goals:
+- Train a chess bot
+- Finish my AlphaDiep project (way more complicated than I initially thought)
