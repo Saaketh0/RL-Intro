@@ -17,6 +17,19 @@ total_error.backward()
 self.optimizer.step()
 ```
 
+Note:
+r = ratio between new/old weights
+gradient = entire networks gradients, mainly talking about what happens from one observation/action/reward sequence.
+The (1 - e) and (1 + e) parts are only supposed to clip the change when the action is good/bad and you want to make it more/less likely.
+So if an action was good and you want to make it more likely (r > 1), 1 + e would clip the ratio from exceeding 1.2.
+And if an action was bad and you want to make it less likely, (0 > r > -1), 1 - e would clip it too.
+The clipping completely cuts off the gradient (makes it 0), so there exists zero benefit towards increasing the ratio of this action anymore
+When the gradient goes in a wrong way though, the gradient is still there, which allows the optimizer to change the gradient to go in the right direction still. Another explanation below if this doesn't make sense.
+
+If you tried to change the weights incorrectly (increase bad decision or decrease good decision) (0 < r < 1 | r < -1), there would be no clipping at all, which would allow r to be as far from -1/1 as needed, but would also keep the gradient of the change, which would allow the optimizer to reverse the change.
+
+Ultimately, the clip also cuts off the gradient, not just constraining the bounds, so the optimizer doesn't overassign specific policy changes.
+
 # Clipped this from ChatGPT, think it explains it again nicely if the explanation above wasn't good.
 
 As you can see below, all we are going is cutting off any gradient that exceeds a 20% change either up or down.
